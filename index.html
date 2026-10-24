@@ -1,0 +1,111 @@
+                
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Itinerary Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf4ff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1769aa;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Travel Planner</h1>
+    <p>Plan your next trip easily!</p>
+
+    <form id="travelForm">
+        <label>Destination</label>
+        <input type="text" id="destination" placeholder="e.g. Goa" required>
+
+        <label>Number of Days</label>
+        <input type="number" id="days" min="1" max="30" placeholder="e.g. 3" required>
+
+        <label>Budget (in ₹)</label>
+        <input type="number" id="budget" min="1" placeholder="e.g. 5000" required>
+
+        <label>Your Interest</label>
+        <select id="interest">
+            <option value="Nature">Nature</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Food">Food</option>
+            <option value="Historical Places">Historical Places</option>
+            <option value="Shopping">Shopping</option>
+        </select>
+
+        <button type="submit">Generate Plan</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById("travelForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const destination = document.getElementById("destination").value;
+        const days = document.getElementById("days").value;
+        const budget = document.getElementById("budget").value;
+        const interest = document.getElementById("interest").value;
+
+        document.getElementById("result").innerHTML = `
+            <h2>Your Travel Plan</h2>
+            <p><b>Destination:</b> ${destination}</p>
+            <p><b>Duration:</b> ${days} days</p>
+            <p><b>Total Budget:</b> ₹${budget}</p>
+            <p><b>Interest:</b> ${interest}</p>
+            <h3>Suggested Plan</h3>
+            <p>Day 1: Explore popular places in ${destination}.</p>
+            <p>Day 2: Enjoy activities related to ${interest}.</p>
+            <p>Remaining days: Explore more attractions and local food.</p>
+            <p>Have a great trip!</p>
+        `;
+    });
+</script>
+
+</body>
+</html>
